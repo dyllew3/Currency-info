@@ -1,13 +1,14 @@
 import time,sys
-from currencyvalues import CURRENCIES, make_threads, CurrencyThread
+from currency import CURRENCIES, make_threads, CurrencyThread
 
 MAX_REQ_ALLOWED = 7
 NUM_TESTS = 1
 MIN = 1
-MAX = 34
+MAX = len(CURRENCIES)
 
 
 def num_threads(num_tests = NUM_TESTS,min_t = MIN,max_t = MAX):
+    print("Max number of queries is 7 * 34 per thread")
     min_time = float("inf")
     amount = MIN
     for i in range(min_t,max_t + 1):

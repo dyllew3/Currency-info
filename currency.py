@@ -3,7 +3,7 @@ import urllib.request, json,threading,time
 
 
 CURRENCIES =["USD",  "EUR", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "LTL", "LVL", "PLN", "RON", "SEK", "CHF", "NOK", "HRK", "RUB" ,"TRY", "AUD" ,"BRL",
-            "CAD", "CNY", "HKD","ILS","INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR", "ISK"]
+            "CAD", "CNY", "HKD","ILS","INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB","ZAR"]
 
 def thread_id():
     id = 0
@@ -70,7 +70,7 @@ pass
 
 
 
-def make_threads(amount,cur_list):
+def make_threads(amount,cur_list = CURRENCIES):
     threads = []
     if amount > 0:
         inc = int(len(cur_list)/amount)

@@ -28,21 +28,27 @@ class BellmanFord():
         self.neg_cycles = self.negative_cycles()
         for cycle in self.neg_cycles:
             print(cycle)
-        for i in  self.distance:
-            print("vertex is " + str(i) + " and dist is " + str(self.distance[i])   )
 
     def negative_cycles(self):
         cycles = []
         for u in self.edges:
+
             for v in self.edges[u]:
                 #print(self.edges[u][v])
                 if self.distance[u] != float("inf") and self.distance[u] + self.edges[u][v] < self.distance[v]:
-                    node = u
-                    path = [u]
-                    print("Negative cycle detected")
-                    while self.prev_node[node] != u:
-                        path = [self.prev_node[node]] + path
+                    marked = dict()
+                    path = []
+                    node = v
+
+                    marked[node] = False
+                    while marked[node] == False:
+                        marked[node] = True
+                        path.append(node)
                         node = self.prev_node[node]
+
+                        if node not in marked.keys():
+                            marked[node] = False
+
                     if(path not in cycles):
                         cycles.append(path)
         return cycles
